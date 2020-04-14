@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="cryptoprice-dashboard">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `cryptoprice-dashboard`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class CryptopriceDashboard extends Polymer.Element {
+      static get is() { return 'cryptoprice-dashboard'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'cryptoprice-dashboard'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(CryptopriceDashboard.is, CryptopriceDashboard);
+  </script>
+</dom-module>
