@@ -1,33 +1,61 @@
-<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
 
 <dom-module id="cryptoprice-dashboard">
   <template>
     <style>
-      :host {
-        display: block;
+      :host, p {
+        display: inline-block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <h2>Hola, [[prop1]]!</h2>
   </template>
 
   <script>
-    /**
-     * `cryptoprice-dashboard`
-     * 
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
-    class CryptopriceDashboard extends Polymer.Element {
-      static get is() { return 'cryptoprice-dashboard'; }
+    class CryptopriceDashboard extends Polymer.Element    {
+      static get is() {
+        return "cryptoprice-dashboard";
+      }
+
       static get properties() {
         return {
           prop1: {
             type: String,
-            value: 'cryptoprice-dashboard'
+            value: "soy tu primer componente en Polymer 2"
           }
         };
+      }
+
+      consultaPrecios() {
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+          if(this.readyState === 4 && this.status === 200) {
+            let moneda_precio = [];
+            let precios = JSON.parse(this.responseText);
+
+            console.log(precios.data[0].base);
+            console.log(precios.data[0].prices.latest);
+            console.log(precios.data[0].prices.latest_price.timestamp);
+            console.log(precios.data[1].base);
+            console.log(precios.data[1].prices.latest);
+            console.log(precios.data[1].prices.latest_price.timestamp);
+            console.log(precios.data[3].base);
+            console.log(precios.data[3].prices.latest);
+            console.log(precios.data[3].prices.latest_price.timestamp);
+            console.log(precios.data[5].base);
+            console.log(precios.data[5].prices.latest);
+            console.log(precios.data[5].prices.latest_price.timestamp);
+          }
+        }
+
+        xhttp.open("GET", "https://www.coinbase.com/api/v2/assets/prices?base=MXN&filter=listed&resolution=latest", true);
+        xhttp.send();
+      }
+
+      ready() {
+        super.ready();
+        console.log("El elemento está listo.");
+        this.consultaPrecios();
       }
     }
 
