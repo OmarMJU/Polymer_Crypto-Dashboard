@@ -45,6 +45,7 @@
     ready() {
       super.ready();
       this._consultaPrecios();
+      this._consultarPrecioHistorico();
       // this._pintaPrecios();
     }
     
@@ -76,6 +77,18 @@
       } else {
         let mngError = `No me pude traer los precios. Código de error: ${respuestaDatos.status} con el estatus: ${respuestaDatos.responseText}`;
         alert(mngError);
+      }
+    }
+
+    _consultarPrecioHistorico() {
+      let respuestaDatos = new XMLHttpRequest();
+
+      respuestaDatos.open("GET", "https://www.coinbase.com/api/v2/assets/prices/5b71fc48-3dd3-540c-809b-f8c94d0e68b5?base=MXN", false);
+      respuestaDatos.send();
+
+      if(respuestaDatos.status === 200 && respuestaDatos.readyState === 4) {
+        let valorHist = JSON.parse(respuestaDatos.responseText);
+        console.log(valorHist.data.prices.hour.prices);
       }
     }
 
