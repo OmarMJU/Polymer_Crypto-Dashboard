@@ -9,6 +9,9 @@
       return "cryptoprice-dashboard";
     }
 
+    /**
+     * Propiedades para el elemento.
+     */
     static get properties() {
       return {
         prop1: {
@@ -22,6 +25,10 @@
       };
     }
     
+    /**
+     * Constructor del elemento. Acá se definen e inicializan las variables y/o las propiedades.
+     * Es el primer callback que se ejecuta cuando se carga el Documento.
+     */
     constructor() {
       super();
       this.moneditas = [
@@ -32,19 +39,27 @@
       ];
     }
     
+    /**
+     * Se ejecuta cuando el elemento está listo y cargado en el documento.
+     */
     ready() {
       super.ready();
       this._consultaPrecios();
-      console.log(this.moneditas);
       this._pintaPrecios();
     }
     
+    /**
+     * Funcion que consulta los precios en Coinbase: https://www.coinbase.com/
+     * y asigna los datos a la propiedad "moneditas".
+     */
     _consultaPrecios() {
       let respuestaDatos = new XMLHttpRequest();
 
+      // Consulta de precios se hace de forma síncrona.
       respuestaDatos.open("GET", "https://www.coinbase.com/api/v2/assets/prices?base=MXN&filter=listed&resolution=latest", false);
       respuestaDatos.send(null);
 
+      // Si el estatus de la consulta fue satisfactorio entonces asigna los precios a la propiedad "moneditas".
       if(respuestaDatos.status === 200 && respuestaDatos.readyState === 4) {
         let contador = 0;
         let valores = JSON.parse(respuestaDatos.responseText);
@@ -64,6 +79,9 @@
       }
     }
 
+    /**
+     * Pinta los datos ya asignados en "moneditas" en el documento mediante "observers".
+     */
     _pintaPrecios() {
       this.moneditas.map((elemento, indice) => {
         this.set("moneditas" + indice + "valorM", this.moneditas[indice].valorM);
