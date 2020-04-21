@@ -9,10 +9,11 @@
     </style>
 
     <h2>Hola, [[prop1]]!</h2>
-    <h2>Hola, [[moneditas.0.nombreM]] - [[moneditas0valorM]] - [[moneditas0Fecha]]</h2>
-    <h2>Hola, [[moneditas.1.nombreM]] - [[moneditas1valorM]] - [[moneditas1Fecha]]</h2>
-    <h2>Hola, [[moneditas.2.nombreM]] - [[moneditas2valorM]] - [[moneditas2Fecha]]</h2>
-    <h2>Hola, [[moneditas.3.nombreM]] - [[moneditas3valorM]] - [[moneditas3Fecha]]</h2>
+
+    <!-- Iterador de un arreglo: Toma la propiedad "moneditas" en el atributo "items" -->
+    <template is="dom-repeat" items="[[moneditas]]">
+      <p>[[index]] - [[item.nombreM]] - [[item.valorM]] - [[item.fecha]]</p>
+    </template>
   </template>
   
   <script src="js/cryptoprice-dashboard.js"></script>

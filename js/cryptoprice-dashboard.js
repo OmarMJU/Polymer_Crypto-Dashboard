@@ -45,7 +45,7 @@
     ready() {
       super.ready();
       this._consultaPrecios();
-      this._pintaPrecios();
+      // this._pintaPrecios();
     }
     
     /**
@@ -82,12 +82,12 @@
     /**
      * Pinta los datos ya asignados en "moneditas" en el documento mediante "observers".
      */
-    _pintaPrecios() {
-      this.moneditas.map((elemento, indice) => {
-        this.set("moneditas" + indice + "valorM", this.moneditas[indice].valorM);
-        this.set("moneditas" + indice + "Fecha", this.moneditas[indice].fecha);
-      });
-    }
+    // _pintaPrecios() {
+    //   this.moneditas.map((elemento, indice) => {
+    //     this.set("moneditas" + indice + "valorM", this.moneditas[indice].valorM);
+    //     this.set("moneditas" + indice + "Fecha", this.moneditas[indice].fecha);
+    //   });
+    // }
   }
 
   window.customElements.define(CryptopriceDashboard.is, CryptopriceDashboard);
