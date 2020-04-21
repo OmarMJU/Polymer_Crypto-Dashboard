@@ -3,62 +3,17 @@
 <dom-module id="cryptoprice-dashboard">
   <template>
     <style>
-      :host, p {
+      :host {
         display: inline-block;
       }
     </style>
+
     <h2>Hola, [[prop1]]!</h2>
+    <h2>Hola, [[moneditas.0.nombreM]] - [[moneditas0valorM]] - [[moneditas0Fecha]]</h2>
+    <h2>Hola, [[moneditas.1.nombreM]] - [[moneditas1valorM]] - [[moneditas1Fecha]]</h2>
+    <h2>Hola, [[moneditas.2.nombreM]] - [[moneditas2valorM]] - [[moneditas2Fecha]]</h2>
+    <h2>Hola, [[moneditas.3.nombreM]] - [[moneditas3valorM]] - [[moneditas3Fecha]]</h2>
   </template>
-
-  <script>
-    class CryptopriceDashboard extends Polymer.Element    {
-      static get is() {
-        return "cryptoprice-dashboard";
-      }
-
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: "soy tu primer componente en Polymer 2"
-          }
-        };
-      }
-
-      consultaPrecios() {
-        let xhttp = new XMLHttpRequest();
-
-        xhttp.onreadystatechange = function() {
-          if(this.readyState === 4 && this.status === 200) {
-            let moneda_precio = [];
-            let precios = JSON.parse(this.responseText);
-
-            console.log(precios.data[0].base);
-            console.log(precios.data[0].prices.latest);
-            console.log(precios.data[0].prices.latest_price.timestamp);
-            console.log(precios.data[1].base);
-            console.log(precios.data[1].prices.latest);
-            console.log(precios.data[1].prices.latest_price.timestamp);
-            console.log(precios.data[3].base);
-            console.log(precios.data[3].prices.latest);
-            console.log(precios.data[3].prices.latest_price.timestamp);
-            console.log(precios.data[5].base);
-            console.log(precios.data[5].prices.latest);
-            console.log(precios.data[5].prices.latest_price.timestamp);
-          }
-        }
-
-        xhttp.open("GET", "https://www.coinbase.com/api/v2/assets/prices?base=MXN&filter=listed&resolution=latest", true);
-        xhttp.send();
-      }
-
-      ready() {
-        super.ready();
-        console.log("El elemento está listo.");
-        this.consultaPrecios();
-      }
-    }
-
-    window.customElements.define(CryptopriceDashboard.is, CryptopriceDashboard);
-  </script>
+  
+  <script src="js/cryptoprice-dashboard.js"></script>
 </dom-module>
