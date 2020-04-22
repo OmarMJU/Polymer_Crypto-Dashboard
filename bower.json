@@ -3,7 +3,9 @@
   "main": "cryptoprice-dashboard.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "iron-ajax": "PolymerElements/iron-ajax#^3.0.1"
+    "iron-ajax": "PolymerElements/iron-ajax#^3.0.1",
+    "chart.js": "^2.9.3",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

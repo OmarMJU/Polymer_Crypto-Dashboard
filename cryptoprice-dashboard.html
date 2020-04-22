@@ -1,10 +1,30 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<script src="/bower_components/chart.js/dist/Chart.js"></script>
 
 <dom-module id="cryptoprice-dashboard">
   <template>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       :host {
         display: inline-block;
+        width: 100%;
+      }
+
+      .contenedorGraph {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .grafica {
+        width: 850px;
+        height: 450px;
+        margin: 20px;
       }
     </style>
 
@@ -14,6 +34,11 @@
     <template is="dom-repeat" items="[[moneditas]]">
       <p>[[index]] - [[item.nombreM]] - [[item.valorM]] - [[item.fecha]]</p>
     </template>
+
+    <!-- Contenedor para la gráfica de los précios hitóricos. -->
+    <div class="contenedorGraph">
+      <canvas class="grafica" id="grafica"></canvas>
+    </div>
   </template>
   
   <script src="js/cryptoprice-dashboard.js"></script>
