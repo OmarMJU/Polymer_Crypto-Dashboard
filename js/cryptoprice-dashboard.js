@@ -1,6 +1,6 @@
-  /**
-  * Calse que define las funciones del elemento.
-  */
+/**
+* Calse que define las funciones del elemento.
+*/
 class CryptopriceDashboard extends Polymer.Element {
   /**
   * Método is para la definición de la etiqueta del elemento.
@@ -46,7 +46,6 @@ class CryptopriceDashboard extends Polymer.Element {
     super.ready();
     this._consultaPrecios();
     this._consultarPrecioHistorico();
-    // this._pintaPrecios();
   }
   
   /**
@@ -80,9 +79,14 @@ class CryptopriceDashboard extends Polymer.Element {
     }
   }
 
+  /**
+   * Función que consulta el precio historico del Bitcoin.
+   * Genera dos arreglos, uno para el precio y otro para el tempo de ese precio.
+   */
   _consultarPrecioHistorico() {
     let respuestaDatos = new XMLHttpRequest();
 
+    // Consulta el precio de forma sincrona.
     respuestaDatos.open("GET", "https://www.coinbase.com/api/v2/assets/prices/5b71fc48-3dd3-540c-809b-f8c94d0e68b5?base=MXN", false);
     respuestaDatos.send();
 
@@ -101,6 +105,12 @@ class CryptopriceDashboard extends Polymer.Element {
     }
   }
 
+  /**
+   * Procesa y pinta los datos en una grafica con ChartJS.
+   * Recibe dos arreglos con los cuales va a pintar los datos.
+   * @param {*} datosPrecio 
+   * @param {*} datosTiempo 
+   */
   _procesoPrecioHistorico(datosPrecio, datosTiempo) {
     let grafica = this.$.grafica.getContext("2d");
     let graficaP = new Chart(grafica, {
@@ -139,17 +149,7 @@ class CryptopriceDashboard extends Polymer.Element {
       }
     });
   }
-
-  /**
-   * Pinta los datos ya asignados en "moneditas" en el documento mediante "observers".
-   */
-  // _pintaPrecios() {
-  //   this.moneditas.map((elemento, indice) => {
-  //     this.set("moneditas" + indice + "valorM", this.moneditas[indice].valorM);
-  //     this.set("moneditas" + indice + "Fecha", this.moneditas[indice].fecha);
-  //   });
-  // }
 }
 
+// Se publica el elemento.
 window.customElements.define(CryptopriceDashboard.is, CryptopriceDashboard);
-
