@@ -3,31 +3,7 @@
 
 <dom-module id="cryptoprice-dashboard">
   <template>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :host {
-        display: inline-block;
-        width: 100%;
-      }
-
-      .contenedorGraph {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .grafica {
-        width: 850px;
-        height: 450px;
-        margin: 20px;
-      }
-    </style>
-
+    <link rel="stylesheet" href="css/general.css">
     <h2>Hola, [[prop1]]!</h2>
 
     <!-- Iterador de un arreglo: Toma la propiedad "moneditas" en el atributo "items" -->
@@ -40,6 +16,5 @@
       <canvas class="grafica" id="grafica"></canvas>
     </div>
   </template>
-  
-  <script src="js/cryptoprice-dashboard.js"></script>
+  <script src="../js/cryptoprice-dashboard.js"></script>
 </dom-module>

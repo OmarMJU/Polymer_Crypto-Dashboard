@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:host {
+    display: inline-block;
+    width: 100%;
+}
+
+.contenedorGraph {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.grafica {
+    width: 850px;
+    height: 450px;
+    margin: 20px;
+}
