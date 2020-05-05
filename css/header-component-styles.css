@@ -1,0 +1,57 @@
+.cabezera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f256e;
+    color: #fff;
+}
+
+.cabezera .icono {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 400px;
+    transition: 0.5s ease;
+}
+
+.cabezera .icono svg  {
+    width: 75px;
+    height: 75px;
+}
+
+.cabezera .menu ul {
+    padding: 10px;
+    width: 650px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.cabezera .menu ul span,
+.cabezera .menu ul li {
+    justify-self: center;
+    align-self: center;
+}
+
+.cabezera .menu ul li a {
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.5s ease;
+    margin: 0px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabezera .menu ul li a svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.cabezera .menu ul li a:hover {
+    color: #0f256e;
+    background-color: #fff;
+}

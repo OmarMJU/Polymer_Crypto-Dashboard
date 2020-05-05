@@ -5,7 +5,8 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "iron-ajax": "PolymerElements/iron-ajax#^3.0.1",
     "chart.js": "^2.9.3",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "slate-font-awesome": "slate-font-awesome#4.7.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
