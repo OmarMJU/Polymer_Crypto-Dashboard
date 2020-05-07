@@ -4,23 +4,29 @@
 
 <dom-module id="cryptoprice-dashboard">
   <template>
-    <aside class="baner">
-      <h2>Bienvenido, [[nombreU]].</h2>
+    <link rel="stylesheet" href="css/dashboard-component-styles.css">
+    <div class="contenedor-dash">
+      <aside class="baner">
+        <h2>Bienvenido, [[nombreU]].</h2>
+  
+        <!-- Iterador de un arreglo: Toma la propiedad "moneditas" en el atributo "items" -->
+        <template is="dom-repeat" items="[[moneditas]]">
+          <p>[[index]] - [[item.nombreM]] - [[item.valorM]]</p>
+        </template>
+      </aside>
+      <section class="datas-coin">
+        <div class="cards-contenedor">
+          <coin-component moneda="BITCOIN" color="f7b924" icono="btn"></coin-component>
+          <coin-component moneda="ETHERIUM" color="2ecc71" icono="eth"></coin-component>
+          <coin-component moneda="BITCOIN CASH" color="f84006" icono="btn"></coin-component>
+          <coin-component moneda="LITE COIN" color="7dcea0" icono="ltc"></coin-component>
+        </div>
 
-      <!-- Iterador de un arreglo: Toma la propiedad "moneditas" en el atributo "items" -->
-      <template is="dom-repeat" items="[[moneditas]]">
-        <p>[[index]] - [[item.nombreM]] - [[item.valorM]]</p>
-      </template>
-    </aside>
-
-    <section>
-      <coin-component moneda="BITCOIN" color="f7b924" icono="btn"></coin-component>
-      <coin-component moneda="ETHERIUM" color="00cd9a" icono="eth"></coin-component>
-    </section>
-
-    <!-- Contenedor para la gráfica de los précios hitóricos. -->
-    <div class="contenedorGraph">
-      <canvas class="grafica" id="grafica"></canvas>
+        <!-- Contenedor para la gráfica de los précios hitóricos. -->
+        <div class="contenedorGraph">
+          <canvas class="grafica" id="grafica"></canvas>
+        </div>
+      </section>
     </div>
   </template>
   <script src="../js/cryptoprice-dashboard.js"></script>

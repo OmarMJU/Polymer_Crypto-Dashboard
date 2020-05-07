@@ -3,9 +3,6 @@ class CoinComponent extends Polymer.Element {
         return "coin-component";
     }
 
-    /**
-      * Object describing property-related metadata used by Polymer features
-      */
     static get properties() {
         return {
             moneda: { type: String },
@@ -36,6 +33,9 @@ class CoinComponent extends Polymer.Element {
                 break;
             case "eth":
                 nodo = "icon-eth-component";
+                break;
+            case "ltc":
+                nodo = "icon-ltc-component";
                 break;
         }
 
