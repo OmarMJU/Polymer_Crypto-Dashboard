@@ -1,0 +1,25 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="icon-btc-component.html">
+<link rel="import" href="icon-eth-component.html">
+
+<dom-module id="coin-component">
+    <template>
+        <link rel="stylesheet" href="css/coin-component-style.css">
+        
+        <div class="contenedor">
+            <div class="titulo-icono">
+                <h4>[[moneda]]</h4>
+            </div>
+            <h3 class="precio">&#36;[[precio]]</h3>
+            <div class="tasa-fecha">
+                <h4>Tasa: [[taza]]</h4>
+                <h4>Fecha: [[fecha]]</h4>
+            </div>
+            <div class="boton">
+                <button>Consulta gr&aacute;fico</button>
+            </div>
+        </div>
+
+    </template>
+    <script src="../js/coin-component.js"></script>
+</dom-module>

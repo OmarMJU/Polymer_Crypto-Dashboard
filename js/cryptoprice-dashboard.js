@@ -14,9 +14,9 @@ class CryptopriceDashboard extends Polymer.Element {
    */
   static get properties() {
     return {
-      prop1: {
+      nombreU: {
         type: String,
-        value: "soy tu primer componente en Polymer 2"
+        value: "Omar"
       },
       moneditas: {
         type: Array,

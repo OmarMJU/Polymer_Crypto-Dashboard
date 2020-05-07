@@ -1,15 +1,22 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="coin-component.html">
 <script src="/bower_components/chart.js/dist/Chart.js"></script>
 
 <dom-module id="cryptoprice-dashboard">
   <template>
-    <!-- <link rel="stylesheet" href="css/general.css"> -->
-    <h2>Hola, [[prop1]]!</h2>
+    <aside class="baner">
+      <h2>Bienvenido, [[nombreU]].</h2>
 
-    <!-- Iterador de un arreglo: Toma la propiedad "moneditas" en el atributo "items" -->
-    <template is="dom-repeat" items="[[moneditas]]">
-      <p>[[index]] - [[item.nombreM]] - [[item.valorM]] - [[item.fecha]]</p>
-    </template>
+      <!-- Iterador de un arreglo: Toma la propiedad "moneditas" en el atributo "items" -->
+      <template is="dom-repeat" items="[[moneditas]]">
+        <p>[[index]] - [[item.nombreM]] - [[item.valorM]]</p>
+      </template>
+    </aside>
+
+    <section>
+      <coin-component moneda="BITCOIN" color="f7b924" icono="btn"></coin-component>
+      <coin-component moneda="ETHERIUM" color="00cd9a" icono="eth"></coin-component>
+    </section>
 
     <!-- Contenedor para la gráfica de los précios hitóricos. -->
     <div class="contenedorGraph">
