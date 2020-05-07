@@ -6,12 +6,6 @@
 
 /* Panel lateral */
 .contenedor-dash .baner {
-    /* background-color: #5252f7; */
-    /* background-color: #0f256e; */
-    /* background-color: #3498db ; */
-    /* background-color: #038868; */
-    /* background-color:  #154360; */
-    /* background-color: #212f3c; */
     background: rgb(15,37,110);
     background: linear-gradient(rgba(15,37,110,1) 29%, rgba(82,82,247,1) 68%, rgba(0,212,255,1) 100%); 
     padding: 20px;
@@ -22,6 +16,21 @@
     transition: 0.5s ease;
 }
 
+.contenedor-dash .baner .moneda {
+    margin: 35px 0px;
+}
+
+.contenedor-dash .baner .moneda .nombreM {
+    font-size: 20px;
+    margin: 0px 0px 2px 0px;
+}
+.contenedor-dash .baner .moneda .valorM {
+    margin: 0px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* Datos de las crypto */
 .contenedor-dash .datas-coin .cards-contenedor {
     display: grid;
     padding: 20px;
