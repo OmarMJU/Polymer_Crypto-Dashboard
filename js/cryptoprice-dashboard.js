@@ -66,7 +66,7 @@ class CryptopriceDashboard extends Polymer.Element {
 
       for(let datoMoneda of valores.data) {
         if(datoMoneda.base === this.moneditas[contador].tipo) {
-            this.moneditas[contador].valorM = datoMoneda.prices.latest;
+            this.moneditas[contador].valorM = separadorMiles(datoMoneda.prices.latest);
             this.moneditas[contador].fecha = datoMoneda.prices.latest_price.timestamp.replace("T", " ").substring(0, datoMoneda.prices.latest_price.timestamp.length - 6);
             contador++;
 
