@@ -1,3 +1,4 @@
+<script src="/bower_components/moment/moment.js"></script>
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <link rel="import" href="icon-btc-component.html">
 <link rel="import" href="icon-eth-component.html">
@@ -13,7 +14,7 @@
             </div>
             <h3 class="precio">&#36;[[precio]]</h3>
             <div class="tasa-fecha">
-                <h4>Tasa: [[taza]]</h4>
+                <h4>Tasa de cambio por dia: [[taza]]&#37;</h4>
                 <h4>Fecha: [[fecha]]</h4>
             </div>
             <div class="boton">
@@ -22,5 +23,6 @@
         </div>
 
     </template>
+    <script src="../js/calagastia.js"></script>
     <script src="../js/coin-component.js"></script>
 </dom-module>

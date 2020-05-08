@@ -6,11 +6,12 @@ class CoinComponent extends Polymer.Element {
     static get properties() {
         return {
             moneda: { type: String },
-            precio: { type: String, value: "264,233.00-hc"},
-            taza: { type: String, value: "0.233443-hc"},
-            fecha: { type: String, value: "06/05/2020-hc"},
+            precio: { type: String },
+            taza: { type: String },
+            fecha: { type: String },
             color: { type: String },
-            icono: { type: String }
+            icono: { type: String },
+            idmon: { type: String },
         };
     }
 
@@ -18,6 +19,7 @@ class CoinComponent extends Polymer.Element {
         super.ready();
         this._estilosTitulo();
         this._agregaIcono(this.icono);
+        this._consultaPrecioMoneda();
     }
 
     _agregaIcono(idIcon) {
@@ -47,6 +49,26 @@ class CoinComponent extends Polymer.Element {
 
     _estilosTitulo() {
         this.shadowRoot.lastElementChild.firstElementChild.firstElementChild.style.color = "#" + this.color;
+    }
+
+    _consultaPrecioMoneda() {
+        const URL_PART = "https://www.coinbase.com/api/v2/assets/prices";
+        const BASE_CAMBIO = "?base=MXN";
+        const URL_CONSULTA = `${URL_PART}/${this.idmon}${BASE_CAMBIO}`;
+
+        // console.log(URL_CONSULTA);
+        var solicitudDatos = new XMLHttpRequest();
+        solicitudDatos.open("GET", URL_CONSULTA, true);
+        solicitudDatos.onreadystatechange = () => {
+            if(solicitudDatos.status === 200 && solicitudDatos.readyState === 4) {
+                var coinDatas = JSON.parse(solicitudDatos.responseText);
+                this.precio = separadorMiles(coinDatas.data.prices.latest);
+                this.taza = formatoPorciento(coinDatas.data.prices.day.percent_change);
+                this.fecha = formatoFecha(coinDatas.data.prices.latest_price.timestamp, "L");
+            }
+        }
+
+        solicitudDatos.send(null);
     }
 }
 

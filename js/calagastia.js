@@ -1,6 +1,6 @@
 /**
  * Da formato a los numeros con separador de miles.
- * @param {*} numero 
+ * @param {number} numero 
  */
 function separadorMiles(numero) {
     var numArray = numero.split(".");
@@ -17,4 +17,24 @@ function separadorMiles(numero) {
     numD = numD.toString().substring(0, 2);
 
     return numE + "." + numD;
+}
+
+/**
+ * De Decimal a porcentaje.
+ * @param {number} numero 
+ */
+function formatoPorciento(numero) {
+    numero = numero * 100;
+    return numero.toFixed(3);
+}
+
+/**
+ * Da formato a la fecha haciendo uso de Moment.JS
+ * https://momentjs.com/
+ * @param {String} fecha 
+ * @param {String} formato 
+ */
+function formatoFecha(fecha, formato) {
+    var fechaF = moment(fecha).format(formato);
+    return fechaF;
 }
