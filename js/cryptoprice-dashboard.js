@@ -32,10 +32,10 @@ class CryptopriceDashboard extends Polymer.Element {
   constructor() {
     super();
     this.moneditas = [
-      {id: "5b71fc48-3dd3-540c-809b-f8c94d0e68b5", urlT: "prices", tipo: "BTC", nombreM: "Bitcoin", valorM: "", fecha: ""},
-      {id: "d85dce9b-5b73-5c3c-8978-522ce1d1c1b4", urlT: "prices", tipo: "BCH", nombreM: "Bitcoin Cash", valorM: "", fecha: ""},
-      {id: "45f99e13-b522-57d7-8058-c57bf92fe7a3", urlT: "stats", tipo: "ETH", nombreM: "Etherium", valorM: "", fecha: ""},
-      {id: "c9c24c6e-c045-5fde-98a2-00ea7f520437", urlT: "prices", tipo: "LTC", nombreM: "Lite Coin", valorM: "", fecha: ""}
+      {tipo: "BTC", nombreM: "Bitcoin", valorM: ""},
+      {tipo: "BCH", nombreM: "Bitcoin Cash", valorM: ""},
+      {tipo: "ETH", nombreM: "Etherium", valorM: ""},
+      {tipo: "LTC", nombreM: "Lite Coin", valorM: ""}
     ];
   }
   
@@ -66,8 +66,8 @@ class CryptopriceDashboard extends Polymer.Element {
 
       for(let datoMoneda of valores.data) {
         if(datoMoneda.base === this.moneditas[contador].tipo) {
-            this.moneditas[contador].valorM = datoMoneda.prices.latest;
-            this.moneditas[contador].fecha = datoMoneda.prices.latest_price.timestamp.replace("T", " ").substring(0, datoMoneda.prices.latest_price.timestamp.length - 6);
+            this.moneditas[contador].valorM = separadorMiles(datoMoneda.prices.latest);
+            this.moneditas[contador].fecha = formatoFecha(datoMoneda.prices.latest_price.timestamp, "L");
             contador++;
 
             if(contador === this.moneditas.length) break;
