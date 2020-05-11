@@ -15,7 +15,6 @@ function separadorMiles(numero) {
     }
 
     numD = numD.toString().substring(0, 2);
-
     return numE + "." + numD;
 }
 
@@ -37,4 +36,22 @@ function formatoPorciento(numero) {
 function formatoFecha(fecha, formato) {
     var fechaF = moment(fecha).format(formato);
     return fechaF;
+}
+
+/**
+ * Obtiene un array de precios y los formatea con separador de miles.
+ * @param {*} preciosH 
+ */
+function arrayPreciosH(preciosH) {
+    var soloPrecios = preciosH.map(precio => separadorMiles(precio[0]));
+    return soloPrecios;
+}
+
+/**
+ * Obtiene un arrar de fechas con formato "MM/DD/YYYY".
+ * @param {*} fechasH 
+ */
+function arrayFechasH(fechasH) {
+    var soloFechas = fechasH.map(fecha => fecha[1]);
+    return soloFechas;
 }

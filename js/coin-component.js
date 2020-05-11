@@ -12,6 +12,7 @@ class CoinComponent extends Polymer.Element {
             color: { type: String },
             icono: { type: String },
             idmon: { type: String },
+            phistorico: { type: Array }
         };
     }
 
@@ -20,10 +21,10 @@ class CoinComponent extends Polymer.Element {
         this._estilosTitulo();
         this._agregaIcono(this.icono);
         this._consultaPrecioMoneda();
+        this._botonPintaGrafica();        
     }
 
     _agregaIcono(idIcon) {
-        console.log(idIcon);
         var titulo = this.shadowRoot.lastElementChild.firstElementChild.firstElementChild;
         var padreIcono = this.shadowRoot.lastElementChild.firstElementChild;
         var tipoNodo;
@@ -55,9 +56,8 @@ class CoinComponent extends Polymer.Element {
         const URL_PART = "https://www.coinbase.com/api/v2/assets/prices";
         const BASE_CAMBIO = "?base=MXN";
         const URL_CONSULTA = `${URL_PART}/${this.idmon}${BASE_CAMBIO}`;
-
-        // console.log(URL_CONSULTA);
         var solicitudDatos = new XMLHttpRequest();
+
         solicitudDatos.open("GET", URL_CONSULTA, true);
         solicitudDatos.onreadystatechange = () => {
             if(solicitudDatos.status === 200 && solicitudDatos.readyState === 4) {
@@ -65,10 +65,23 @@ class CoinComponent extends Polymer.Element {
                 this.precio = separadorMiles(coinDatas.data.prices.latest);
                 this.taza = formatoPorciento(coinDatas.data.prices.day.percent_change);
                 this.fecha = formatoFecha(coinDatas.data.prices.latest_price.timestamp, "L");
+                this.phistorico = coinDatas.data.prices.day.prices;
             }
         }
 
         solicitudDatos.send(null);
+    }
+
+    _botonPintaGrafica() {
+        var boton = this.$.botonGrafica;
+        
+        boton.addEventListener("click", () => {
+            var preciosMoneda = arrayPreciosH(this.phistorico).slice(0, 50);
+            var fechasMoneda = arrayFechasH(this.phistorico).slice(0, 50);
+
+            console.log(preciosMoneda);
+            console.log(fechasMoneda);
+        });
     }
 }
 
