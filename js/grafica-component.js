@@ -9,13 +9,17 @@ class GraficaComponent extends Polymer.Element {
             datosfechas: { type: Array }
         }
     }
-
+    
     static get observers() {
         return ["_graficaDatos(datosprecios, datosfechas)"];
     }
-
+    
     _graficaDatos(precios, fechas) {
+        
         if ((precios.length > 0 && precios != null) && (fechas.length > 0 && fechas != null)) {
+            console.log(precios);
+            console.log(fechas);
+
             var grafica = this.$.grafica.getContext("2d");
             var dibujoGrafica = new Chart(grafica, {
                 type: "line",
@@ -50,8 +54,6 @@ class GraficaComponent extends Polymer.Element {
                     }
                 }
             });
-            // console.log(precios);
-            // console.log(fechas);
         }
     }
 }

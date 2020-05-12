@@ -99,10 +99,10 @@ class CryptopriceDashboard extends Polymer.Element {
         fechaValor.push(elemento[1]);
       }
 
-      console.log(valorHist);
+      // console.log(valorHist);
       // console.log(fechaValor);
-      this.datospreciomoneda = precioValor;
-      this.datosfechamoneda = fechaValor.map(fecha => formatoFecha(fecha, "lll"));
+      // this.datospreciomoneda = precioValor;
+      // this.datosfechamoneda = fechaValor.map(fecha => formatoFecha(fecha, "lll"));
     }
   }
 }

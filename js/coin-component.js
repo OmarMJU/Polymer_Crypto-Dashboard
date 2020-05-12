@@ -65,7 +65,7 @@ class CoinComponent extends Polymer.Element {
                 this.precio = separadorMiles(coinDatas.data.prices.latest);
                 this.taza = formatoPorciento(coinDatas.data.prices.day.percent_change);
                 this.fecha = formatoFecha(coinDatas.data.prices.latest_price.timestamp, "L");
-                this.phistorico = coinDatas.data.prices.day.prices;
+                this.phistorico = coinDatas.data.prices.week.prices;
             }
         }
 
@@ -76,14 +76,12 @@ class CoinComponent extends Polymer.Element {
         var boton = this.$.botonGrafica;
         
         boton.addEventListener("click", () => {
-            var propiedadPreciosPadre = this.parentNode.parentNode.parentNode.parentNode.host.datospreciomoneda;
-            var propiedadFechasPadre = this.parentNode.parentNode.parentNode.parentNode.host.datosfechamoneda;
-            var preciosMoneda = arrayPreciosH(this.phistorico).slice(0, 50);
-            var fechasMoneda = arrayFechasH(this.phistorico).slice(0, 50);
+            var graficaComponente = this.parentNode.parentNode.children[1];
+            var preciosMoneda = arrayPreciosH(this.phistorico);
+            var fechasMoneda = arrayFechasH(this.phistorico);
 
-            propiedadPreciosPadre = preciosMoneda;
-            propiedadFechasPadre = fechasMoneda;
-            
+            graficaComponente.setAttribute("datosprecios", JSON.stringify(preciosMoneda));
+            graficaComponente.setAttribute("datosfechas", JSON.stringify(fechasMoneda));
         });
     }
 }

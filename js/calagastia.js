@@ -53,6 +53,6 @@ function arrayPreciosH(preciosH) {
  * @param {*} fechasH 
  */
 function arrayFechasH(fechasH) {
-    var soloFechas = fechasH.map(fecha => fecha[1]);
+    var soloFechas = fechasH.map(fecha => formatoFecha(fecha[1], "lll"));
     return soloFechas;
 }
