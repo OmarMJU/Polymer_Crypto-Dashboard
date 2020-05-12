@@ -34,7 +34,8 @@ function formatoPorciento(numero) {
  * @param {String} formato 
  */
 function formatoFecha(fecha, formato) {
-    var fechaF = moment(fecha).format(formato);
+    var fechaOb = new Date(fecha * 1000);
+    var fechaF = moment(fechaOb).format(formato);
     return fechaF;
 }
 

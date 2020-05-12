@@ -20,11 +20,11 @@ class GraficaComponent extends Polymer.Element {
             var dibujoGrafica = new Chart(grafica, {
                 type: "line",
                 data: {
-                    labels: fechas,
+                    labels: fechas.splice(0,10).reverse(),
                     datasets: [
                         {
-                            data: precios,
-                            pointRadius: 0,
+                            data: precios.splice(0,10).reverse(),
+                            pointRadius: 3,
                             // TOOO
                             label: "BTC",
                             backgroundColor: "rgba(54, 162, 235, 0.2)",
@@ -36,7 +36,7 @@ class GraficaComponent extends Polymer.Element {
                     animation: false,
                     tooltips: {
                         mode: "index",
-                        intersect: true
+                        intersect: false
                     }, scales: {
                         xAxes: [{
                             gridLines: {
@@ -50,8 +50,8 @@ class GraficaComponent extends Polymer.Element {
                     }
                 }
             });
-            console.log(precios);
-            console.log(fechas);
+            // console.log(precios);
+            // console.log(fechas);
         }
     }
 }

@@ -99,55 +99,11 @@ class CryptopriceDashboard extends Polymer.Element {
         fechaValor.push(elemento[1]);
       }
 
+      console.log(valorHist);
+      // console.log(fechaValor);
       this.datospreciomoneda = precioValor;
-      this.datosfechamoneda = fechaValor;
-      this._procesoPrecioHistorico(precioValor, fechaValor);
+      this.datosfechamoneda = fechaValor.map(fecha => formatoFecha(fecha, "lll"));
     }
-  }
-
-  /**
-   * Procesa y pinta los datos en una grafica con ChartJS.
-   * Recibe dos arreglos con los cuales va a pintar los datos.
-   * @param {*} datosPrecio 
-   * @param {*} datosTiempo 
-   */
-  _procesoPrecioHistorico(datosPrecio, datosTiempo) {
-    let grafica = this.$.grafica.getContext("2d");
-    let graficaP = new Chart(grafica, {
-      type: "line",
-      data: {
-        labels: datosTiempo.reverse(),
-        datasets: [
-          {
-            data: datosPrecio.reverse(),
-            pointRadious: 0,
-            label: "BTC",
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgba(54, 162, 235, 1)",
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        animation: false,
-        tooltips: {
-          mode: "index",
-          intersect: true
-        },
-        scales: {
-          xAxes: [{
-            gridLines: {
-              display: false
-            }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: false
-            }
-          }]
-        }
-      }
-    });
   }
 }
 
