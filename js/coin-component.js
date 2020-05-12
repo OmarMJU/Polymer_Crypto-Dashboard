@@ -76,11 +76,14 @@ class CoinComponent extends Polymer.Element {
         var boton = this.$.botonGrafica;
         
         boton.addEventListener("click", () => {
+            var propiedadPreciosPadre = this.parentNode.parentNode.parentNode.parentNode.host.datospreciomoneda;
+            var propiedadFechasPadre = this.parentNode.parentNode.parentNode.parentNode.host.datosfechamoneda;
             var preciosMoneda = arrayPreciosH(this.phistorico).slice(0, 50);
             var fechasMoneda = arrayFechasH(this.phistorico).slice(0, 50);
 
-            console.log(preciosMoneda);
-            console.log(fechasMoneda);
+            propiedadPreciosPadre = preciosMoneda;
+            propiedadFechasPadre = fechasMoneda;
+            
         });
     }
 }

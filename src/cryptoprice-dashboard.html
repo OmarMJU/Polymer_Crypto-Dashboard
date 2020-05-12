@@ -1,5 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <link rel="import" href="coin-component.html">
+<link rel="import" href="grafica-component.html">
 <script src="/bower_components/chart.js/dist/Chart.js"></script>
 
 <dom-module id="cryptoprice-dashboard">
@@ -30,9 +31,10 @@
         </div>
 
         <!-- Contenedor para la gráfica de los précios hitóricos. -->
-        <div class="contenedorGraph">
+        <!-- <div class="contenedorGraph">
           <canvas class="grafica" id="grafica"></canvas>
-        </div>
+        </div> -->
+        <grafica-component datosprecios="{{datospreciomoneda}}" datosfechas="{{datosfechamoneda}}"></grafica-component>
       </section>
     </div>
   </template>

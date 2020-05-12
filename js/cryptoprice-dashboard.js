@@ -14,14 +14,10 @@ class CryptopriceDashboard extends Polymer.Element {
    */
   static get properties() {
     return {
-      nombreU: {
-        type: String,
-        value: "Omar"
-      },
-      moneditas: {
-        type: Array,
-        value: []
-      }
+      nombreU: { type: String, value: "Omar" },
+      moneditas: { type: Array, value: [] },
+      datospreciomoneda: { type: Array },
+      datosfechamoneda: { type: Array }
     };
   }
   
@@ -37,6 +33,8 @@ class CryptopriceDashboard extends Polymer.Element {
       {tipo: "ETH", nombreM: "Etherium", valorM: ""},
       {tipo: "LTC", nombreM: "Lite Coin", valorM: ""}
     ];
+    this.datospreciomoneda = [];
+    this.datosfechamoneda = [];
   }
   
   /**
@@ -101,6 +99,8 @@ class CryptopriceDashboard extends Polymer.Element {
         fechaValor.push(elemento[1]);
       }
 
+      this.datospreciomoneda = precioValor;
+      this.datosfechamoneda = fechaValor;
       this._procesoPrecioHistorico(precioValor, fechaValor);
     }
   }
