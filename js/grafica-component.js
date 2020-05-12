@@ -11,11 +11,45 @@ class GraficaComponent extends Polymer.Element {
     }
 
     static get observers() {
-        return ["_verValores(datosprecios, datosfechas)"];
+        return ["_graficaDatos(datosprecios, datosfechas)"];
     }
 
-    _verValores(precios, fechas) {
+    _graficaDatos(precios, fechas) {
         if ((precios.length > 0 && precios != null) && (fechas.length > 0 && fechas != null)) {
+            var grafica = this.$.grafica.getContext("2d");
+            var dibujoGrafica = new Chart(grafica, {
+                type: "line",
+                data: {
+                    labels: fechas,
+                    datasets: [
+                        {
+                            data: precios,
+                            pointRadius: 0,
+                            // TOOO
+                            label: "BTC",
+                            backgroundColor: "rgba(54, 162, 235, 0.2)",
+                            borderColor: "rgba(54, 162, 235, 1)",
+                            borderWidth: 1
+                        }
+                    ]
+                }, options: {
+                    animation: false,
+                    tooltips: {
+                        mode: "index",
+                        intersect: true
+                    }, scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display: false
+                            }
+                        }], yAxes: [{
+                            gridLines: {
+                                display: false
+                            }
+                        }]
+                    }
+                }
+            });
             console.log(precios);
             console.log(fechas);
         }
