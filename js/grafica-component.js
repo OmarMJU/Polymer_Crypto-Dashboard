@@ -17,17 +17,17 @@ class GraficaComponent extends Polymer.Element {
     _graficaDatos(precios, fechas) {
         
         if ((precios.length > 0 && precios != null) && (fechas.length > 0 && fechas != null)) {
-            console.log(precios);
-            console.log(fechas);
+            // console.log(precios);
+            // console.log(fechas);
 
             var grafica = this.$.grafica.getContext("2d");
             var dibujoGrafica = new Chart(grafica, {
                 type: "line",
                 data: {
-                    labels: fechas.splice(0,10).reverse(),
+                    labels: fechas.reverse(),
                     datasets: [
                         {
-                            data: precios.splice(0,10).reverse(),
+                            data: precios.reverse(),
                             pointRadius: 3,
                             // TOOO
                             label: "BTC",
@@ -40,15 +40,27 @@ class GraficaComponent extends Polymer.Element {
                     animation: false,
                     tooltips: {
                         mode: "index",
-                        intersect: false
+                        intersect: true,
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                                
+                                if (label) label += ': ';
+                                label += "$" + separadorMiles(tooltipItem.yLabel.toString()) + "MXN";
+
+                                return label;
+                            }
+                        }
                     }, scales: {
                         xAxes: [{
-                            gridLines: {
-                                display: false
-                            }
+                            gridLines: { display: false }
                         }], yAxes: [{
-                            gridLines: {
-                                display: false
+                            gridLines: { display: false },
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function(dato) {
+                                    return "$" + separadorMiles(dato.toString()) + "MXN";
+                                }
                             }
                         }]
                     }

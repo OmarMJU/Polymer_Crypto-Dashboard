@@ -3,9 +3,19 @@
  * @param {number} numero 
  */
 function separadorMiles(numero) {
-    var numArray = numero.split(".");
-    var numE = numArray[0];
-    var numD = numArray[1];
+    var numE;
+    var numD = "";
+    var separ = "";
+
+    if (numero.indexOf(".") != -1) {    
+        var numArray = numero.split(".");
+        numE = numArray[0];
+        numD = numArray[1];
+        numD = numD.toString().substring(0, 2);
+        separ = ".";
+    } else {
+        numE = numero;
+    }
 
     numE = numE.replace(/\./g,'');
 
@@ -13,9 +23,8 @@ function separadorMiles(numero) {
         numE = numE.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
         numE = numE.split('').reverse().join('').replace(/^[\.]/,'').replace(".", ",");
     }
-
-    numD = numD.toString().substring(0, 2);
-    return numE + "." + numD;
+    
+    return numE + separ + numD;
 }
 
 /**

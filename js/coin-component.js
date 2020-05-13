@@ -77,7 +77,8 @@ class CoinComponent extends Polymer.Element {
         
         boton.addEventListener("click", () => {
             var graficaComponente = this.parentNode.parentNode.children[1];
-            var preciosMoneda = arrayPreciosH(this.phistorico);
+            // var preciosMoneda = arrayPreciosH(this.phistorico);
+            var preciosMoneda = this.phistorico.map(precio => precio[0]);
             var fechasMoneda = arrayFechasH(this.phistorico);
 
             graficaComponente.setAttribute("datosprecios", JSON.stringify(preciosMoneda));
