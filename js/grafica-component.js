@@ -15,21 +15,16 @@ class GraficaComponent extends Polymer.Element {
     }
     
     _graficaDatos(precios, fechas) {
-        
         if ((precios.length > 0 && precios != null) && (fechas.length > 0 && fechas != null)) {
-            // console.log(precios);
-            // console.log(fechas);
-
             var grafica = this.$.grafica.getContext("2d");
             var dibujoGrafica = new Chart(grafica, {
                 type: "line",
                 data: {
-                    labels: fechas.reverse(),
+                    labels: fechas.map(fecha => fecha * 1000).reverse(),
                     datasets: [
                         {
                             data: precios.reverse(),
                             pointRadius: 3,
-                            // TOOO
                             label: "BTC",
                             backgroundColor: "rgba(54, 162, 235, 0.2)",
                             borderColor: "rgba(54, 162, 235, 1)",
@@ -37,7 +32,6 @@ class GraficaComponent extends Polymer.Element {
                         }
                     ]
                 }, options: {
-                    animation: false,
                     tooltips: {
                         mode: "index",
                         intersect: true,
@@ -53,11 +47,19 @@ class GraficaComponent extends Polymer.Element {
                         }
                     }, scales: {
                         xAxes: [{
-                            gridLines: { display: false }
+                            gridLines: { display: false },
+                            type: "time",
+                            time: {
+                                unit: "hour",
+                                unitStepSize: 24,
+                                round: "hour",
+                                displayFormats: {
+                                    hour: "MMM D, h:mm A"
+                                }
+                            }
                         }], yAxes: [{
                             gridLines: { display: false },
                             ticks: {
-                                beginAtZero: true,
                                 callback: function(dato) {
                                     return "$" + separadorMiles(dato.toString()) + "MXN";
                                 }

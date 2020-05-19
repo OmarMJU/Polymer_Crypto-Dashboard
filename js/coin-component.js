@@ -73,13 +73,14 @@ class CoinComponent extends Polymer.Element {
     }
 
     _botonPintaGrafica() {
-        var boton = this.$.botonGrafica;
+        const boton = this.$.botonGrafica;
         
         boton.addEventListener("click", () => {
-            var graficaComponente = this.parentNode.parentNode.children[1];
-            // var preciosMoneda = arrayPreciosH(this.phistorico);
-            var preciosMoneda = this.phistorico.map(precio => precio[0]);
-            var fechasMoneda = arrayFechasH(this.phistorico);
+            const graficaComponente = this.parentNode.parentNode.children[1];
+            // const preciosMoneda = arrayPreciosH(this.phistorico);
+            const preciosMoneda = this.phistorico.map(precio => precio[0]);
+            const fechasMoneda = this.phistorico.map(fecha => fecha[1]);
+            // const fechasMoneda = this.phistorico.map(fecha => fecha[1]);
 
             graficaComponente.setAttribute("datosprecios", JSON.stringify(preciosMoneda));
             graficaComponente.setAttribute("datosfechas", JSON.stringify(fechasMoneda));
