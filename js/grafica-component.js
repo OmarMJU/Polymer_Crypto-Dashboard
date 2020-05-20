@@ -6,68 +6,81 @@ class GraficaComponent extends Polymer.Element {
     static get properties() {
         return {
             datosprecios: { type: Array },
-            datosfechas: { type: Array }
+            datosfechas: { type: Array },
+            colorgrafica: { type: String },
+            nombregrafica: { type: String }
         }
     }
     
     static get observers() {
-        return ["_graficaDatos(datosprecios, datosfechas)"];
+        return ["_graficaDatos(datosprecios, datosfechas, nombregrafica, colorgrafica)"];
     }
     
-    _graficaDatos(precios, fechas) {
+    _graficaDatos(precios, fechas, nombreGraph, colorGrafica) {
         if ((precios.length > 0 && precios != null) && (fechas.length > 0 && fechas != null)) {
-            var grafica = this.$.grafica.getContext("2d");
-            var dibujoGrafica = new Chart(grafica, {
-                type: "line",
-                data: {
-                    labels: fechas.map(fecha => fecha * 1000).reverse(),
-                    datasets: [
-                        {
-                            data: precios.reverse(),
-                            pointRadius: 3,
-                            label: "BTC",
-                            backgroundColor: "rgba(54, 162, 235, 0.2)",
-                            borderColor: "rgba(54, 162, 235, 1)",
-                            borderWidth: 1
-                        }
-                    ]
-                }, options: {
-                    tooltips: {
-                        mode: "index",
-                        intersect: true,
-                        callbacks: {
-                            label: function(tooltipItem, data) {
-                                var label = data.datasets[tooltipItem.datasetIndex].label || '';
-                                
-                                if (label) label += ': ';
-                                label += "$" + separadorMiles(tooltipItem.yLabel.toString()) + "MXN";
+            const grafica = this.$.grafica.getContext("2d");
+            const dibujoGrafica = new Chart(grafica, this._construyeDatosGrafica(precios, fechas, nombreGraph, colorGrafica));
+        }
+    }
 
-                                return label;
+    _construyeDatosGrafica(precios, fechas, nombreGraph, colorGrafica) {
+        // const COLORES = this._calculaColor(colorGrafica);
+        // console.log(COLORES);
+        return {
+            type: "line",
+            data: {
+                labels: fechas.map(fecha => fecha * 1000).reverse(),
+                datasets: [{
+                    data: precios.reverse(),
+                    pointRadius: 3,
+                    label: nombreGraph,
+                    backgroundColor: "rgba(247, 185, 36, 0.2)",
+                    borderColor: "rgba(247, 185, 36, 1)",
+                    borderWidth: 1
+                }]
+            }, options: {
+                tooltips: {
+                    mode: "index",
+                    intersect: true,
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                            
+                            if (label) label += ': ';
+                            label += "$" + separadorMiles(tooltipItem.yLabel.toString()) + "MXN";
+
+                            return label;
+                        }
+                    }
+                }, scales: {
+                    xAxes: [{
+                        gridLines: { display: false },
+                        type: "time",
+                        time: {
+                            unit: "hour",
+                            unitStepSize: 24,
+                            round: "hour",
+                            displayFormats: {
+                                hour: "MMM D, h:mm A"
                             }
                         }
-                    }, scales: {
-                        xAxes: [{
-                            gridLines: { display: false },
-                            type: "time",
-                            time: {
-                                unit: "hour",
-                                unitStepSize: 24,
-                                round: "hour",
-                                displayFormats: {
-                                    hour: "MMM D, h:mm A"
-                                }
-                            }
-                        }], yAxes: [{
-                            gridLines: { display: false },
-                            ticks: {
-                                callback: function(dato) {
-                                    return "$" + separadorMiles(dato.toString()) + "MXN";
-                                }
-                            }
-                        }]
-                    }
+                    }], yAxes: [{
+                        gridLines: { display: false },
+                        ticks: {
+                            callback: dato => "$" + separadorMiles(dato.toString()) + " MXN"
+                        }
+                    }]
                 }
-            });
+            }
+        }
+    }
+
+    _calculaColor(colorG) {
+        switch(colorG) {
+            case "f7b924":
+                return ["rgba(247, 185, 36, 0.2)", "rgba(247, 185, 36, 1)"];
+            case "2ecc71":
+                return ["rgba(10, 194, 90, 0.2)", "rgba(10, 194, 90, 1)"];
         }
     }
 }
