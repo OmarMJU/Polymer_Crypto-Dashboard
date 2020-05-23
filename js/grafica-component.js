@@ -24,8 +24,8 @@ class GraficaComponent extends Polymer.Element {
     }
 
     _construyeDatosGrafica(precios, fechas, nombreGraph, colorGrafica) {
-        // const COLORES = this._calculaColor(colorGrafica);
-        // console.log(COLORES);
+        const COLORES = this._calculaColor(colorGrafica);
+        console.log(COLORES);
         return {
             type: "line",
             data: {
@@ -34,8 +34,8 @@ class GraficaComponent extends Polymer.Element {
                     data: precios.reverse(),
                     pointRadius: 3,
                     label: nombreGraph,
-                    backgroundColor: "rgba(247, 185, 36, 0.2)",
-                    borderColor: "rgba(247, 185, 36, 1)",
+                    backgroundColor: COLORES[0],
+                    borderColor: COLORES[1],
                     borderWidth: 1
                 }]
             }, options: {
@@ -81,6 +81,10 @@ class GraficaComponent extends Polymer.Element {
                 return ["rgba(247, 185, 36, 0.2)", "rgba(247, 185, 36, 1)"];
             case "2ecc71":
                 return ["rgba(10, 194, 90, 0.2)", "rgba(10, 194, 90, 1)"];
+            case "f84006":
+                return ["rgba(248, 64, 6, 0.2)", "rgba(248, 64, 6, 1)"];
+            case "7dcea0":
+                return ["rgba(125, 206, 160, 0.2)", "rgba(125, 206, 160, 1)"];
         }
     }
 }
