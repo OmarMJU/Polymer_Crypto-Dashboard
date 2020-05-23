@@ -25,13 +25,14 @@ class GraficaComponent extends Polymer.Element {
 
     _construyeDatosGrafica(precios, fechas, nombreGraph, colorGrafica) {
         const COLORES = this._calculaColor(colorGrafica);
+        const COLOR_BLANCO = "#fff";
         console.log(COLORES);
         return {
             type: "line",
             data: {
-                labels: fechas.map(fecha => fecha * 1000).reverse(),
+                labels: fechas.map(fecha => fecha * 1000),
                 datasets: [{
-                    data: precios.reverse(),
+                    data: precios,
                     pointRadius: 3,
                     label: nombreGraph,
                     backgroundColor: COLORES[0],
@@ -39,6 +40,14 @@ class GraficaComponent extends Polymer.Element {
                     borderWidth: 1
                 }]
             }, options: {
+                title: {
+                    display:  true,
+                    text: "Valor de la moneda en un rango de la última semana",
+                    fontColor: COLOR_BLANCO
+                },
+                legend: {
+                    labels: { fontColor: COLOR_BLANCO }
+                },
                 tooltips: {
                     mode: "index",
                     intersect: true,
@@ -54,6 +63,12 @@ class GraficaComponent extends Polymer.Element {
                     }
                 }, scales: {
                     xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: "Fecha",
+                            fontColor: COLOR_BLANCO,
+                            fontSize: 15
+                        },
                         gridLines: { display: false },
                         type: "time",
                         time: {
@@ -63,11 +78,21 @@ class GraficaComponent extends Polymer.Element {
                             displayFormats: {
                                 hour: "MMM D, h:mm A"
                             }
+                        },
+                        ticks: {
+                            fontColor: COLOR_BLANCO
                         }
                     }], yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: "Precios",
+                            fontColor: COLOR_BLANCO,
+                            fontSize: 15
+                        },
                         gridLines: { display: false },
                         ticks: {
-                            callback: dato => "$" + separadorMiles(dato.toString()) + " MXN"
+                            callback: dato => "$" + separadorMiles(dato.toString()) + " MXN",
+                            fontColor: COLOR_BLANCO
                         }
                     }]
                 }

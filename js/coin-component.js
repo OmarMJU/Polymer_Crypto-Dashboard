@@ -77,8 +77,8 @@ class CoinComponent extends Polymer.Element {
         
         boton.addEventListener("click", () => {
             const graficaComponente = this.parentNode.parentNode.children[1];
-            const preciosMoneda = this.phistorico.map(precio => precio[0]);
-            const fechasMoneda = this.phistorico.map(fecha => fecha[1]);
+            const preciosMoneda = this.phistorico.map(precio => precio[0]).reverse();
+            const fechasMoneda = this.phistorico.map(fecha => fecha[1]).reverse();
 
             graficaComponente.setAttribute("datosprecios", JSON.stringify(preciosMoneda));
             graficaComponente.setAttribute("datosfechas", JSON.stringify(fechasMoneda));
