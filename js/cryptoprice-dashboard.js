@@ -17,7 +17,7 @@ class CryptopriceDashboard extends Polymer.Element {
       nombreU: { type: String, value: "Omar" },
       moneditas: { type: Array, value: [] },
       datospreciomoneda: { type: Array },
-      datosfechamoneda: { type: Array }
+      datosfechamoneda: { type: Array },
     };
   }
   
@@ -36,45 +36,17 @@ class CryptopriceDashboard extends Polymer.Element {
     this.datospreciomoneda = [];
     this.datosfechamoneda = [];
   }
-  
+
+  // static get observers() {
+  //   return ["_consultaPrecios(moneditas)"];
+  // }
+
   /**
    * Se ejecuta cuando el elemento está listo y cargado en el documento.
    */
   ready() {
     super.ready();
-    this._consultaPrecios();
     this._consultarPrecioHistorico();
-  }
-  
-  /**
-   * Funcion que consulta los precios en Coinbase: https://www.coinbase.com/
-   * y asigna los datos a la propiedad "moneditas".
-   */
-  _consultaPrecios() {
-    let respuestaDatos = new XMLHttpRequest();
-
-    // Consulta de precios se hace de forma síncrona.
-    respuestaDatos.open("GET", "https://www.coinbase.com/api/v2/assets/prices?base=MXN&filter=listed&resolution=latest", false);
-    respuestaDatos.send(null);
-
-    // Si el estatus de la consulta fue satisfactorio entonces asigna los precios a la propiedad "moneditas".
-    if(respuestaDatos.status === 200 && respuestaDatos.readyState === 4) {
-      let contador = 0;
-      let valores = JSON.parse(respuestaDatos.responseText);
-
-      for(let datoMoneda of valores.data) {
-        if(datoMoneda.base === this.moneditas[contador].tipo) {
-            this.moneditas[contador].valorM = separadorMiles(datoMoneda.prices.latest);
-            this.moneditas[contador].fecha = formatoFecha(datoMoneda.prices.latest_price.timestamp, "L");
-            contador++;
-
-            if(contador === this.moneditas.length) break;
-        }
-      }
-    } else {
-      let mngError = `No me pude traer los precios. Código de error: ${respuestaDatos.status} con el estatus: ${respuestaDatos.responseText}`;
-      alert(mngError);
-    }
   }
 
   /**

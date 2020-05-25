@@ -52,7 +52,7 @@ class GraficaComponent extends Polymer.Element {
                     mode: "index",
                     intersect: true,
                     callbacks: {
-                        label: function(tooltipItem, data) {
+                        label: (tooltipItem, data) => {
                             var label = data.datasets[tooltipItem.datasetIndex].label || '';
                             
                             if (label) label += ': ';

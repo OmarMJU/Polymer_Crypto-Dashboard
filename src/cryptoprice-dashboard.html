@@ -8,17 +8,9 @@
     <link rel="stylesheet" href="css/dashboard-component-styles.css">
     <div class="contenedor-dash">
 
-      <!-- Asiide lateral. -->
+      <!-- Aside lateral. -->
       <aside class="baner">
         <h2>Bienvenido, [[nombreU]].</h2>
-  
-        <!-- Iterador de un arreglo: Toma la propiedad "moneditas" en el atributo "items" -->
-        <template is="dom-repeat" items="[[moneditas]]">
-          <div class="moneda">
-            <p class="nombreM">[[item.nombreM]]</p>
-            <p class="valorM">&#36;[[item.valorM]]</p>
-          </div>
-        </template>
       </aside>
 
       <!-- Contenedor de los items de cada monenda. -->

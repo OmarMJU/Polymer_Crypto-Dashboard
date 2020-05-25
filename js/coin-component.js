@@ -24,6 +24,12 @@ class CoinComponent extends Polymer.Element {
         this._botonPintaGrafica();        
     }
 
+    static get observers() {
+        return [
+            "_datosMonedas(precio, moneda)"
+        ];
+    }
+
     _agregaIcono(idIcon) {
         var titulo = this.shadowRoot.lastElementChild.firstElementChild.firstElementChild;
         var padreIcono = this.shadowRoot.lastElementChild.firstElementChild;
@@ -85,6 +91,27 @@ class CoinComponent extends Polymer.Element {
             graficaComponente.setAttribute("colorgrafica", this.color);
             graficaComponente.setAttribute("nombregrafica", this.moneda);
         });
+    }
+
+    _datosMonedas(precio, moneda) {
+        if (precio) {
+            const PADRE = this.parentNode.parentNode.parentNode.children[0];
+            const CONTENEDOR = document.createElement("div");
+            const NOMBRE = document.createElement("p");
+            const PRECIO = document.createElement("p");
+
+            NOMBRE.innerHTML = moneda;
+            PRECIO.innerHTML = precio;
+
+            CONTENEDOR.setAttribute("class", "moneda");
+            NOMBRE.setAttribute("class", "nombreM");
+            PRECIO.setAttribute("class", "valorM");
+
+            CONTENEDOR.appendChild(NOMBRE);
+            CONTENEDOR.appendChild(PRECIO);
+
+            PADRE.appendChild(CONTENEDOR);
+        }
     }
 }
 
