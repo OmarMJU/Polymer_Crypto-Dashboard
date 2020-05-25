@@ -48,6 +48,10 @@ function formatoFecha(fecha, formato) {
     return fechaF;
 }
 
+/**
+ * Da formato DD/MM/YYYY a fechas con formato de entrada TIMESTAMP.
+ * @param {*} fecha 
+ */
 function formatoFechaDDMMAAAA(fecha) {
     let newFecha = new Date(fecha);
     newFecha = moment(newFecha).format("L");
@@ -71,22 +75,4 @@ function arrayPreciosH(preciosH) {
 function arrayFechasH(fechasH) {
     var soloFechas = fechasH.map(fecha => formatoFecha(fecha[1], "lll"));
     return soloFechas;
-}
-
-function generaDatosGrafica(tipoGrafica, datosEjeX, datosEjeY) {
-    return {
-        type: tipoGrafica,
-        labels: datosEjeX,
-        datasets: [
-            {
-                data: datosEjeY,
-                pointRadius: 3,
-                // TOOO
-                label: "BTC",
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                borderColor: "rgba(54, 162, 235, 1)",
-                borderWidth: 1
-            }
-        ]
-    };
 }
