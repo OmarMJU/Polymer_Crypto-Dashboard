@@ -70,7 +70,7 @@ class CoinComponent extends Polymer.Element {
                 var coinDatas = JSON.parse(solicitudDatos.responseText);
                 this.precio = separadorMiles(coinDatas.data.prices.latest);
                 this.taza = formatoPorciento(coinDatas.data.prices.day.percent_change);
-                this.fecha = formatoFecha(coinDatas.data.prices.latest_price.timestamp, "L");
+                this.fecha = formatoFechaDDMMAAAA(coinDatas.data.prices.latest_price.timestamp);
                 this.phistorico = coinDatas.data.prices.week.prices;
             }
         }
@@ -82,7 +82,11 @@ class CoinComponent extends Polymer.Element {
         const boton = this.$.botonGrafica;
         
         boton.addEventListener("click", () => {
-            const graficaComponente = this.parentNode.parentNode.children[1];
+            const padreGrafica = this.parentNode.parentNode;
+            let graficaComponente = this.parentNode.parentNode.children[1];
+            graficaComponente.remove();
+            graficaComponente = document.createElement("grafica-component");
+
             const preciosMoneda = this.phistorico.map(precio => precio[0]).reverse();
             const fechasMoneda = this.phistorico.map(fecha => fecha[1]).reverse();
 
@@ -90,6 +94,8 @@ class CoinComponent extends Polymer.Element {
             graficaComponente.setAttribute("datosfechas", JSON.stringify(fechasMoneda));
             graficaComponente.setAttribute("colorgrafica", this.color);
             graficaComponente.setAttribute("nombregrafica", this.moneda);
+
+            padreGrafica.appendChild(graficaComponente);
         });
     }
 

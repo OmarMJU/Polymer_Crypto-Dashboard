@@ -48,6 +48,13 @@ function formatoFecha(fecha, formato) {
     return fechaF;
 }
 
+function formatoFechaDDMMAAAA(fecha) {
+    let newFecha = new Date(fecha);
+    newFecha = moment(newFecha).format("L");
+
+    return newFecha;
+}
+
 /**
  * Obtiene un array de precios y los formatea con separador de miles.
  * @param {*} preciosH 

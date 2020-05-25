@@ -19,6 +19,7 @@ class GraficaComponent extends Polymer.Element {
     _graficaDatos(precios, fechas, nombreGraph, colorGrafica) {
         if ((precios.length > 0 && precios != null) && (fechas.length > 0 && fechas != null)) {
             const grafica = this.$.grafica.getContext("2d");
+            grafica.clearRect(0, 0, grafica.width, grafica.height);
             const dibujoGrafica = new Chart(grafica, this._construyeDatosGrafica(precios, fechas, nombreGraph, colorGrafica));
         }
     }
@@ -26,7 +27,7 @@ class GraficaComponent extends Polymer.Element {
     _construyeDatosGrafica(precios, fechas, nombreGraph, colorGrafica) {
         const COLORES = this._calculaColor(colorGrafica);
         const COLOR_BLANCO = "#fff";
-        console.log(COLORES);
+
         return {
             type: "line",
             data: {
