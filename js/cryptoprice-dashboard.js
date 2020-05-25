@@ -37,10 +37,6 @@ class CryptopriceDashboard extends Polymer.Element {
     this.datosfechamoneda = [];
   }
 
-  // static get observers() {
-  //   return ["_consultaPrecios(moneditas)"];
-  // }
-
   /**
    * Se ejecuta cuando el elemento está listo y cargado en el documento.
    */
@@ -55,27 +51,27 @@ class CryptopriceDashboard extends Polymer.Element {
    */
   _consultarPrecioHistorico() {
     let respuestaDatos = new XMLHttpRequest();
+    const URL_CONSULTA = "https://www.coinbase.com/api/v2/assets/prices/5b71fc48-3dd3-540c-809b-f8c94d0e68b5?base=MXN";
 
-    // Consulta el precio de forma sincrona.
-    respuestaDatos.open("GET", "https://www.coinbase.com/api/v2/assets/prices/5b71fc48-3dd3-540c-809b-f8c94d0e68b5?base=MXN", false);
-    respuestaDatos.send();
-
-    if(respuestaDatos.status === 200 && respuestaDatos.readyState === 4) {
-      let fechaValor= [];
-      let precioValor = [];
-      let valorHist = JSON.parse(respuestaDatos.responseText);
-      let datosPrecioFecha = valorHist.data.prices.day.prices
-
-      for(let elemento of datosPrecioFecha) {
-        precioValor.push(elemento[0]);
-        fechaValor.push(elemento[1]);
+    respuestaDatos.open("GET", URL_CONSULTA, true);
+    respuestaDatos.onreadystatechange = () => {
+      if (respuestaDatos.readyState === 4) {
+        if (respuestaDatos.status === 200) {
+          const GRAPH_COMPONENT = this.$.componentgrafic;
+          const DATOS_GRAPH = JSON.parse(respuestaDatos.responseText);
+          const VEC_PRECIOS = DATOS_GRAPH.data.prices.week.prices;
+          const moneda = VEC_PRECIOS.map(precio => precio[0]).reverse();
+          const fechas = VEC_PRECIOS.map(fecha => fecha[1]).reverse();
+          
+          GRAPH_COMPONENT.setAttribute("datosprecios", JSON.stringify(moneda));
+          GRAPH_COMPONENT.setAttribute("datosfechas", JSON.stringify(fechas));
+          GRAPH_COMPONENT.setAttribute("colorgrafica", "f7b924");
+          GRAPH_COMPONENT.setAttribute("nombregrafica", "BITCOIN");
+        }
       }
+    };
 
-      // console.log(valorHist);
-      // console.log(fechaValor);
-      // this.datospreciomoneda = precioValor;
-      // this.datosfechamoneda = fechaValor.map(fecha => formatoFecha(fecha, "lll"));
-    }
+    respuestaDatos.send(null);
   }
 }
 

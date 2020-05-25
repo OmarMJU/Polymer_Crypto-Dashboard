@@ -107,7 +107,7 @@ class CoinComponent extends Polymer.Element {
             const PRECIO = document.createElement("p");
 
             NOMBRE.innerHTML = moneda;
-            PRECIO.innerHTML = precio;
+            PRECIO.innerHTML = `$${precio}`;
 
             CONTENEDOR.setAttribute("class", "moneda");
             NOMBRE.setAttribute("class", "nombreM");
@@ -115,7 +115,6 @@ class CoinComponent extends Polymer.Element {
 
             CONTENEDOR.appendChild(NOMBRE);
             CONTENEDOR.appendChild(PRECIO);
-
             PADRE.appendChild(CONTENEDOR);
         }
     }
