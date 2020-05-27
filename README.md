@@ -1,21 +1,19 @@
-# \<cryptoprice-dashboard\>
 
+# Crypto Dashboard Polymer 2 (:heavy_dollar_sign:)
 
+Proyecto de Dashboard que muestra los precios de **Bitcoin**, **Etherum**, **Lite Coin** y **Bitcoin Cash**. Desarrollado en Polymer 2.
 
-## Install the Polymer-CLI
+## Dependencias
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
+Apesar de que fue desarrollado con tecnología ya obsoleta se usaron herramientas increibles.
 
-## Viewing Your Element
+* [Chart.JS](https://www.chartjs.org) :chart_with_upwards_trend:
+* [Moment.JS](https://momentjs.com) :clock9:
 
-```
-$ polymer serve
-```
+### ChartJS
 
-## Running Tests
+Ayuda a realizar las gráficas de los precios vs las fechas :chart_with_upwards_trend:.
 
-```
-$ polymer test
-```
+### MomentJS
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+Facilita realizar la conversión del formato `epoch` a formato `ISO` sin realizar tanto código :relaxed:.
