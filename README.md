@@ -7,11 +7,38 @@ Los datos se obtienen de :moneybag:[Coinbase](https://www.coinbase.com) y de su 
 
 ## Dependencias
 
-Apesar de que fue desarrollado con tecnología ya obsoleta se usaron herramientas increibles.
+A pesar de que fue desarrollado con tecnología añeja se usaron herramientas no tan añejas.
 
+* [NodeJS](https://nodejs.org/en/) :green_heart:
+* [Polymer](https://www.polymer-project.org) :sparkles:
+* [Bower](https://bower.io) :bird:
 * [Chart.JS](https://www.chartjs.org) :chart_with_upwards_trend:
 * [Moment.JS](https://momentjs.com) :clock9:
 * [Font Awesome](https://fontawesome.com) :rocket:
+
+### NodeJS
+
+Para el proyecto va a ser muy importante ya que sus dependencias e instalaciones de los paquetes se realizan con `npm`. Por ello puedes descargar `NodeJS` [aquí](https://nodejs.org/en/) o si prefieres correrlo en un contenedor `Docker` puedes ejecutar el comando 
+
+`
+$ docker run node
+`
+
+### Polymer
+
+Es el corazón de la app por ello es totalmente necesario para instalarlo solo basta ejecutar el siguiente comando en una terminal
+
+`
+$ npm install -g lit-element
+`
+
+### Bower
+
+También es un instalador de paquetes y dependencias el cual se va a usar para cargar todas las dependencias que se especifican en el archivo `bower.json` sin que sea necesario instalar cada una de las dependencias que de forma manual. Bower se puede instalar así
+
+`
+npm install -g bower
+`
 
 ### ChartJS
 
@@ -24,3 +51,4 @@ Facilita realizar la conversión del formato `epoch` a formato `ISO` sin realiza
 ### Font Awesome
 
 Propociona iconos increibles y de fácil manupulación ya que pueden sen tratados como `fonts` :muscle:. 
+
