@@ -37,7 +37,7 @@ $ npm install -g lit-element
 También es un instalador de paquetes y dependencias el cual se va a usar para cargar todas las dependencias que se especifican en el archivo `bower.json` sin que sea necesario instalar cada una de las dependencias que de forma manual. Bower se puede instalar así
 
 `
-npm install -g bower
+$ npm install -g bower
 `
 
 ### ChartJS
@@ -52,3 +52,10 @@ Facilita realizar la conversión del formato `epoch` a formato `ISO` sin realiza
 
 Propociona iconos increibles y de fácil manupulación ya que pueden sen tratados como `fonts` :muscle:. 
 
+## Instalación de dependencias
+
+No es necesario realizar una instalación como tal de todas las dependencias que se mencionan anteriormente ya que vienen especificadas en el archivo `bower.json`. Es suficiente con instalar el comando
+
+`
+$ bower install
+`
