@@ -26,7 +26,7 @@ $ docker run node
 
 ### Polymer
 
-Es el corazón de la app por ello es totalmente necesario para instalarlo solo basta ejecutar el siguiente comando en una terminal
+Es el corazón de la app por ello es totalmente necesario, y para instalarlo solo basta ejecutar el siguiente comando en una terminal
 
 ```
 $ npm install -g lit-element
@@ -50,11 +50,11 @@ Facilita realizar la conversión del formato `epoch` a formato `ISO` sin realiza
 
 ### Font Awesome
 
-Propociona iconos increibles y de fácil manupulación ya que pueden sen tratados como `fonts` :muscle:. 
+Propociona iconos increibles y de fácil manipulación ya que pueden sen tratados como `fonts` :muscle:. 
 
 ## Instalación de dependencias
 
-No es necesario realizar una instalación como tal de todas las dependencias que se mencionan anteriormente ya que vienen especificadas en el archivo `bower.json`. Es suficiente con instalar el comando
+No es necesario realizar una instalación como tal de todas las dependencias que se mencionan anteriormente ya que vienen especificadas en el archivo `bower.json`. Es suficiente con ejecutar el comando
 
 ```
 $ bower install
