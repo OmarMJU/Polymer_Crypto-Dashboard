@@ -60,3 +60,22 @@ No es necesario realizar una instalación como tal de todas las dependencias que
 $ bower install
 ```
 
+## Run y Testing
+
+Se puede realizar un test antes de realizar la ejecución del proyecto
+
+```
+$ polymer test
+```
+
+y para correr un servidor de forma local y montar la ejecución del proyecto
+
+```
+$ polymer serve
+```
+
+### Creditos
+
+La idea para el desarrollo del proyecto se obtuvo del curso **_Learn and Build using Polymer LitElement (beyond Polymer 3)_** que puedes consultar [aquí](https://www.udemy.com/share/102mRqCUYaeFtQR3o=/).
+
+Hecho con :blue_heart: para todos aquellos que aman aprender y tirar código.
