@@ -20,25 +20,25 @@ A pesar de que fue desarrollado con tecnología añeja se usaron herramientas no
 
 Para el proyecto va a ser muy importante ya que sus dependencias e instalaciones de los paquetes se realizan con `npm`. Por ello puedes descargar `NodeJS` [aquí](https://nodejs.org/en/) o si prefieres correrlo en un contenedor `Docker` puedes ejecutar el comando 
 
-`
+```
 $ docker run node
-`
+```
 
 ### Polymer
 
 Es el corazón de la app por ello es totalmente necesario para instalarlo solo basta ejecutar el siguiente comando en una terminal
 
-`
+```
 $ npm install -g lit-element
-`
+```
 
 ### Bower
 
 También es un instalador de paquetes y dependencias el cual se va a usar para cargar todas las dependencias que se especifican en el archivo `bower.json` sin que sea necesario instalar cada una de las dependencias que de forma manual. Bower se puede instalar así
 
-`
+```
 $ npm install -g bower
-`
+```
 
 ### ChartJS
 
@@ -56,6 +56,7 @@ Propociona iconos increibles y de fácil manupulación ya que pueden sen tratado
 
 No es necesario realizar una instalación como tal de todas las dependencias que se mencionan anteriormente ya que vienen especificadas en el archivo `bower.json`. Es suficiente con instalar el comando
 
-`
+```
 $ bower install
-`
+```
+
