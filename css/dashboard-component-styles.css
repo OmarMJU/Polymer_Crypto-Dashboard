@@ -7,7 +7,7 @@
 /* Panel lateral */
 .contenedor-dash .baner {
     background: rgb(15,37,110);
-    background: linear-gradient(rgba(15,37,110,1) 29%, rgba(82,82,247,1) 68%, rgba(0,212,255,1) 100%); 
+    background: linear-gradient(rgba(15, 37, 110, 1) 29%, rgba(82, 82, 247, 1) 68%, rgba(0, 0, 0, 1) 100%); 
     padding: 20px;
 }
 
